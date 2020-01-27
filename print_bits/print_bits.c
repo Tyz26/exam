@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaatjie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/26 09:21:32 by tbaatjie          #+#    #+#             */
-/*   Updated: 2020/01/27 15:33:45 by tbaatjie         ###   ########.fr       */
+/*   Created: 2020/01/27 14:34:52 by tbaatjie          #+#    #+#             */
+/*   Updated: 2020/01/27 15:25:01 by tbaatjie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+void	print_bits(unsigned char octet)
 {
+	int bits;
 	int i;
 
-	i = 0;
-	if(argc == 4)
+	bits = 128;
+	i = 8;
+	while (i > 0 )
 	{
-		while(argv[1][i] != '\0' && argv[2][1] == '\0' && argv[3][1] == '\0' )
+		if(octet > bits)
 		{
-			if(argv[1][i] == argv[2][0])
-			{
-				argv[1][i] = argv[3][0];
-			}
-			write(1, &argv[1][i], 1);
-
-			i++;
+			octet = octet - bits;
+			write(1, "1", 1);		
 		}
+		
+		else
+		{
+			write(1, "0", 1);
+		}
+		bits = bits / 2;
+		i--;
+
 	}
-	write(1, "\n", 1);
-	return (0);
 }

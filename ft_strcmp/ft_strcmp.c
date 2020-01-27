@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaatjie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/26 09:21:32 by tbaatjie          #+#    #+#             */
-/*   Updated: 2020/01/27 15:33:45 by tbaatjie         ###   ########.fr       */
+/*   Created: 2020/01/27 15:26:24 by tbaatjie          #+#    #+#             */
+/*   Updated: 2020/01/27 15:36:49 by tbaatjie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
 
 	i = 0;
-	if(argc == 4)
+	while(s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
 	{
-		while(argv[1][i] != '\0' && argv[2][1] == '\0' && argv[3][1] == '\0' )
-		{
-			if(argv[1][i] == argv[2][0])
-			{
-				argv[1][i] = argv[3][0];
-			}
-			write(1, &argv[1][i], 1);
-
-			i++;
-		}
+		s1[i] = s2[i];
+		i++;
 	}
-	write(1, "\n", 1);
-	return (0);
+	return(s1[i] - s2[i]);
 }
